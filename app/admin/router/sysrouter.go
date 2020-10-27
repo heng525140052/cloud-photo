@@ -71,6 +71,7 @@ func sysNoCheckRoleRouter(r *gin.RouterGroup) {
 	registerSysTableRouter(v1)
 	registerPublicRouter(v1)
 	registerSysSettingRouter(v1)
+	registerAliossRouter(v1)
 }
 
 func registerDBRouter(api *gin.RouterGroup) {
@@ -263,6 +264,14 @@ func registerAliossRouter(v1 *gin.RouterGroup) {
 	p := v1.Group("/alioss")
 	{
 		p.POST("/listBuckets", alioss.ListBuckets)
+
 		p.POST("/listObjects", alioss.ListObjects)
+		p.POST("/copyObject", alioss.CopyObject)
+		p.POST("/isObjectExits", alioss.IsObjectExits)
+		p.POST("/objectDetailedMeta", alioss.ObjectDetailedMeta)
+		p.POST("/getObjectSignUrl", alioss.GetObjectSignUrl)
+
+
+
 	}
 }
