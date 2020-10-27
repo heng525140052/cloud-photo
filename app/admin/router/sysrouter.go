@@ -1,6 +1,7 @@
 package router
 
 import (
+	"go-admin/app/admin/apis/alioss"
 	"mime"
 
 	log2 "go-admin/app/admin/apis/log"
@@ -255,5 +256,13 @@ func registerPublicRouter(v1 *gin.RouterGroup) {
 	p := v1.Group("/public")
 	{
 		p.POST("/uploadFile", public.UploadFile)
+	}
+}
+
+func registerAliossRouter(v1 *gin.RouterGroup) {
+	p := v1.Group("/alioss")
+	{
+		p.POST("/listBuckets", alioss.ListBuckets)
+		p.POST("/listObjects", alioss.ListObjects)
 	}
 }
